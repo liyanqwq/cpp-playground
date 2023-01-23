@@ -15,33 +15,37 @@
 -->
 <!DOCTYPE html>
 <head>
-<meta name="viewport" content="width=480"/>
-<link rel="stylesheet" href="main.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/golden-layout/1.5.9/css/goldenlayout-base.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/golden-layout/1.5.9/css/goldenlayout-light-theme.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.css"/>
+  <meta name="viewport" content="width=device-width" />
+  <link rel="stylesheet" href="main.css" />
+  <link
+    rel="stylesheet"
+    href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/golden-layout/1.5.9/css/goldenlayout-base.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/golden-layout/1.5.9/css/goldenlayout-light-theme.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/xterm/3.14.5/xterm.min.css"
+  />
 </head>
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.5/ace.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/golden-layout/1.5.9/goldenlayout.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/fit/fit.min.js"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/ace/1.4.5/ace.js"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/golden-layout/1.5.9/goldenlayout.min.js"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/xterm/3.14.5/xterm.min.js"></script>
+  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/xterm/3.14.5/addons/fit/fit.min.js"></script>
   <div id="all" class="horiz">
-    <div class="toolbar-left">
-      <button id="run">run</button>
-      <button id="open">open</button>
-      <input id="openInput" type="file" hidden>
-      <select id="keyboard">
-        <option value="vim">vim</option>
-        <option value="emacs">emacs</option>
-        <option value="sublime">sublime</option>
-      </select>
-      <input id="showTiming" type="checkbox">
-      <label for="showTiming">show timing</label>
+    <div class="toolbar-left" style="padding: 10px 20px">
+      <button id="reset">新建</button>
+      <button id="open" style="margin-left: 10px">导入</button>
+      <input id="openInput" type="file" hidden />
     </div>
-    <div class="toolbar-right">
-      <button id="reset">reset</button>
+    <div class="toolbar-right" style="padding: 10px 20px">
+      <input id="showTiming" type="checkbox" />
+      <label for="showTiming">显示运行时间</label>
+      <button id="run" style="margin-left: 10px">运行 (Ctrl+Enter)</button>
     </div>
     <div id="layout"></div>
   </div>

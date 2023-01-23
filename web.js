@@ -17,27 +17,65 @@
 const LAYOUT_CONFIG_KEY = 'layoutConfig';
 
 const initialProgram =
-`#include <canvas.h>
-#include <stdint.h>
+  `#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <bitset>
+#include <unordered_map>
+using namespace std;
 
-const int w = 1000;
-const int h = 800;
-Canvas c{w, h};
-ImageData image{w, h};
-
-int main() {
-    for (int y = 0; y < h; ++y) {
-        for (int x = 0; x < w; ++x) {
-            image.data[y * w + x] = RGB(x | y, 0, 0);
-        }
+template <typename T = int>
+inline T read()
+{
+    T x = 0, w = 1;
+    char ch = 0;
+    while (ch < '0' || ch > '9')
+    {
+        if (ch == '-')
+            w = -1;
+        ch = getchar();
     }
-    image.commit();
-    c.putImageData(image, 0, 0);
+    while (ch >= '0' && ch <= '9')
+    {
+        x = (x << 3) + (x << 1) + (ch - '0');
+        ch = getchar();
+    }
+    return x * w;
+}
+template <typename T = int>
+inline void write(T x)
+{
+    if (x < 0)
+        x = -x, putchar('-');
+    if (!x)
+    {
+        putchar('0');
+        return;
+    }
+    static int sta[64];
+    int tp = 0;
+    while (x)
+    {
+        sta[tp++] = x % 10, x /= 10;
+    }
+    while (tp)
+    {
+        putchar(sta[--tp] + '0');
+    }
+}
+const int N = 5e5 + 5;
 
-    const char* msg = "x | y";
-    c.setFillStyle("white");
-    c.setFont("bold 200px sans");
-    c.fillText(msg, (w - c.measureText(msg)) / 2, (h + 100) / 2);
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    printf("Hello World!");
+
+    return 0;
 }
 `;
 
@@ -55,16 +93,15 @@ function initLayout() {
       content: [{
         type: 'component',
         componentName: 'editor',
-        componentState: {fontSize: 18, value: initialProgram},
+        componentState: { fontSize: 18, value: initialProgram },
+        isClosable: false,
       }, {
         type: 'stack',
         content: [{
           type: 'component',
           componentName: 'terminal',
-          componentState: {fontSize: 18},
-        }, {
-          type: 'component',
-          componentName: 'canvas',
+          componentState: { fontSize: 18 },
+          isClosable: false,
         }]
       }]
     }]
@@ -79,12 +116,10 @@ function initLayout() {
     // Editor stuff
     editor.commands.addCommand({
       name: 'run',
-      bindKey: {win: 'Ctrl+Enter', mac: 'Command+Enter'},
+      bindKey: { win: 'Ctrl+Enter', mac: 'Command+Enter' },
       exec: run
     });
   });
-
-  layout.registerComponent('canvas', CanvasComponent);
   layout.init();
 }
 
